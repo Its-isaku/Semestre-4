@@ -1,23 +1,29 @@
 //modelo se 
 //molde de una clase
-public class nodoej5 {
+public class Nodo 
+{
     private String Elem;
-    private nodoej5 next; //cuerda que unae a otro elemento
+    private Nodo next; //cuerda que unae a otro elemento
+
     //get asignacion o conloca elemento en a caja
     //mas adelante se cambiaran el nombre de las variables
-    public void setElem(String variable) {
+    public void setElem(String variable) 
+    {
         Elem = variable;
     }
+    
     //get permite visualizar el contenido, regresa
-    public String getElem(){
+    public String getElem()
+    {
         return Elem;
     }
 
-    public void setnext(nodoej5 variable)
+    public void setnext(Nodo variable)
     {
         next = variable;
     }
-    public nodoej5 getnext(){
+    public Nodo getnext()
+    {
         return next;
     }
 }

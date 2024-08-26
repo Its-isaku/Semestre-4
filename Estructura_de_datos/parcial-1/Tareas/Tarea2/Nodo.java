@@ -1,9 +1,14 @@
+//librerias
+
+import java.time.LocalDateTime;
+
 //modelo se 
 //molde de una clase
 public class Nodo 
 {
     private String Elem;
     private Nodo next; //cuerda que unae a otro elemento
+    private LocalDateTime FechaHora;
 
     //get asignacion o conloca elemento en a caja
     //mas adelante se cambiaran el nombre de las variables
@@ -26,4 +31,15 @@ public class Nodo
     {
         return next;
     }
+
+    public void setFecha_Hora(LocalDateTime FechaHora)
+    {
+        this.FechaHora = FechaHora;
+    }
+
+    public LocalDateTime getFecha_Hora()
+    {
+        return FechaHora;
+    }
+
 }

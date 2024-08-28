@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class EJ5 {
+public class EJ6 {
     public static void main (String[] args)
     {
         System.out.println("||--------------------Ejercicio 5---------------------||\n");
 
         Scanner leer = new  Scanner(System.in);
-        ListaEj5 grupo = new ListaEj5();
+        ListaDoble grupo = new ListaDoble();
         String nombre;
         String colado;
 
@@ -32,7 +32,7 @@ public class EJ5 {
                 System.out.println("\n");
                 break;
 
-                case 3:
+               /*  case 3:
                 System.out.print("Nombre para insertar al inicio: ");
                 nombre = leer.nextLine();
                 grupo.InsertarInicio(nombre);
@@ -59,7 +59,7 @@ public class EJ5 {
                     nombre = leer.nextLine();
                     grupo.Borrar(nombre);
                 break;
-
+                */
                 case 9: 
                 System.out.println("Saliendo....\n");
                 break;
@@ -72,13 +72,15 @@ public class EJ5 {
     public static void menu()
     {
 
-        System.out.println("||-------------------Listas simples-------------------||\n");
+        System.out.println("||-------------------Listas dobles-------------------||\n");
         System.out.println("1 -> Insertar"); 
         System.out.println("2 -> Mostrar");
+        /* 
         System.out.println("3 -> Insertar inicio");
         System.out.println("4 -> Bucar");
         System.out.println("5 -> Insertar dentro de lista");
         System.out.println("6 -> Borrar");
+         */
         System.out.println("9 -> Salir"); 
         System.out.println("\n||-------------------------------------------------||\n");
 

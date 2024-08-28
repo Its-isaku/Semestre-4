@@ -23,7 +23,7 @@ public class Lista {
     {    
         inicio = variable;
     }
-
+ 
     public Nodo getInicio()
     {
         return inicio;
@@ -125,7 +125,7 @@ public class Lista {
             fin = nuevo;
         }
         else if(posicion == 0 )// si la posicion es 0 se inserta al inicio
-        {
+        { 
             nuevo.setnext(inicio);
             inicio = nuevo;
         }

@@ -1,0 +1,232 @@
+//Librerias
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
+public class Lista
+{
+    private Nodo inicio;
+    private Nodo fin;
+    private DateTimeFormatter formatter;
+
+    //valores iniciales
+    public Lista()
+    {
+        inicio = null;
+        fin = null;
+
+        //Define el formato para fecha y hora
+        formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    }
+    public void setInicio(Nodo variable)
+    {    
+        inicio = variable;
+    }
+
+    public Nodo getInicio()
+    {
+        return inicio;
+    }
+    public void setFin(Nodo variable)
+    {    
+        fin = variable;
+    }
+
+    public Nodo getFin()
+    {
+        return fin;
+    }
+
+    public void direcciones()
+    {
+        System.out.println("inicio: " + inicio);
+        System.out.println("fin: " + fin);
+    }
+
+    public void insertar(String Elem)
+    {
+        //System.out.println("elemento recibido: " + elem);
+        Nodo nuevo = new Nodo();
+        nuevo.setElem(Elem);
+        nuevo.setFecha_Hora(LocalDateTime.now());//guarda la fecha y a hora
+    
+        //lisat vacia coloca el primer elemento
+        if (inicio == null && fin == null)// lista vacia
+        {
+            inicio = nuevo;
+            fin = nuevo;
+        }
+        else
+        {
+            fin.setnext(nuevo);
+            fin = nuevo;
+        }
+    }
+
+
+    public void mostrar()
+    {
+        if (inicio != null)
+        {
+            Nodo actual = inicio;
+            Nodo primerInsertado = inicio; // Asumimos que el primer nodo es el primer insertado
+    
+            // Primera pasada: Mostrar nombres y fechas
+            while (actual != null)
+            {
+                // Formatea la fecha y la hora
+                String fechaHoraFormateada = actual.getFecha_Hora().format(formatter);
+                System.out.println("Nombre: " + actual.getElem() + ", Fecha y hora de ingreso: " + fechaHoraFormateada);
+    
+                actual = actual.getnext(); // Avanza al siguiente nodo
+            }
+    
+            System.out.println("--------------------------------------------------------------------------------------");
+    
+            // Segunda pasada: Mostrar desfases de tiempo
+            actual = primerInsertado.getnext(); // Comenzamos con el nodo siguiente al primero
+    
+            while (actual != null)
+            {
+                // Calcular la diferencia total en segundos entre el nodo inicial y el nodo actual
+                LocalDateTime fechaHoraInicio = primerInsertado.getFecha_Hora();
+                LocalDateTime fechaHoraActual = actual.getFecha_Hora();
+                long totalSegundos = ChronoUnit.SECONDS.between(fechaHoraInicio, fechaHoraActual);
+    
+                // Convertir el total de segundos a horas, minutos y segundos
+                long desfaseHoras = totalSegundos / 3600;
+                long desfaseMinutos = (totalSegundos % 3600) / 60;
+                long desfaseSegundos = totalSegundos % 60;
+    
+                // Mostrar el nombre y el desfase de tiempo
+                System.out.println(actual.getElem() + " tiene un desfase de: " + desfaseHoras + " horas, " + desfaseMinutos + " minutos, " + (desfaseSegundos * (-1)) + " segundos");
+    
+                actual = actual.getnext(); // Avanza al siguiente nodo
+            }
+        }
+        else
+        {
+            System.err.println("La lista está vacía!\n");
+        }
+    }
+    
+    
+
+    
+
+    public void InsertarInicio(String Elem)
+    {
+        Nodo nuevo = new Nodo();
+        nuevo.setElem(Elem);
+        nuevo.setFecha_Hora(LocalDateTime.now());//guarda la fecha y a hora
+        Nodo aux = inicio;
+        inicio = nuevo;
+        nuevo.setnext(aux);
+    }
+
+    public void Buscar(String Elem)
+    {
+
+        boolean estado = false;
+        Nodo i = inicio;
+
+        while( i != null)
+        {
+            if(Elem.equals(i.getElem()))
+            {
+                System.out.println("El elemento se encuentra en la lista.\n");
+                i = null;
+                estado = true; 
+            }
+            else
+            {
+                i = i.getnext();
+            }
+        }
+        if (estado == false)
+            System.out.println("El elemento no se esncuentra en la lista\n");
+        
+    }
+
+    public void InsertarEnMedio(String Elem, String colado)
+    {
+        
+        boolean estado = false;
+        Nodo nuevo =  new Nodo();
+        nuevo.setElem(colado);
+        Nodo i = inicio;
+        Nodo ant = inicio;
+        nuevo.setFecha_Hora(LocalDateTime.now());//guarda la fecha y a hora
+
+        while(i != null && estado == false)
+        {
+            if(Elem.equals(i.getElem()))
+            {
+                System.out.println("El elemento se encuentra en la lista.\n");
+                estado = true; 
+
+                if(i == inicio)
+                {
+                    InsertarInicio(colado);
+                }
+                else
+                {
+                    ant.setnext(nuevo);
+                    nuevo.setnext(i);
+                }
+                
+            }
+            else
+            {
+                if(i != inicio)
+                    ant = ant.getnext();
+                i = i.getnext();
+            }
+        }
+
+        if (estado == false)
+            System.out.println("El elemento no se esncuentra en la lista\n");
+    }
+
+    public void Borrar(String Elem)
+    {
+        boolean estado = false;
+        Nodo i = inicio;
+        Nodo ant = inicio;
+
+        while( i != null)
+        {
+            if(Elem.equals(i.getElem()))
+            {
+                if (i == inicio)
+                {
+                    inicio = inicio.getnext();
+                    i.setnext(null);
+                } 
+                else
+                {
+                    if(i == fin)
+                        fin = ant;
+                    ant.setnext(i.getnext());
+                    i.setnext(null);
+                }
+                
+
+                System.out.println("El elemento fue borrado de la lista.\n");
+                i = null;
+                estado = true; 
+            }
+            else
+            {
+                if(i != inicio)
+                    ant = ant.getnext();
+
+                i = i.getnext();
+            }
+        }
+        if (estado == false)
+            System.out.println("El elemento no se esncuentra en la lista\n");
+    }
+}
+
+

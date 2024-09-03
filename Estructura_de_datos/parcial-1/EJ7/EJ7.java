@@ -1,7 +1,10 @@
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Scanner;
 
-public class EJ6 {
-    public static void main (String[] args)
+
+public class EJ7 {
+    public static void main (String[] args) throws Exception 
     {
         System.out.println("||--------------------Ejercicio 5---------------------||\n");
 
@@ -27,7 +30,7 @@ public class EJ6 {
                 break;
 
                 case 2:
-                    if(grupo.vacio() == true)
+                    if(grupo.vacio())
                         System.out.println("No hay elementos! ");
                     else
                     {
@@ -41,7 +44,7 @@ public class EJ6 {
                     System.out.print("Nombre para insertar al inicio: ");
                     nombre = leer.nextLine();
 
-                    if(grupo.vacio() == true)//no hay elementos
+                    if(grupo.vacio())//no hay elementos
                     {
                         grupo.insertar(nombre);
                     }
@@ -68,31 +71,56 @@ public class EJ6 {
                 break;
 
                 case 6:
-                    if(grupo.vacio() == true)
-                        System.out.println("No hay elementos para borrar!");
-                    else{
+                    if(!grupo.vacio())
+                    {
                         System.out.println("nombre a borrar: ");
                         nombre = leer.nextLine();
                     
-                        if(grupo.Borrar(nombre) == true)
-                            System.out.println("Borrado! ");
-                        else
-                            System.out.println("Elemento no encontrado! ");
+                        if(grupo.Borrar(nombre) == true) System.out.println("Borrado! ");
+                        else System.out.println("Elemento no encontrado! ");
                     
-                        
                         System.out.println("\n");
-                        }
+                    }
+                        
+                    else System.out.println("No hay elementos para borrar!");
                 break;
 
                 case 7:
-                    grupo.limpiar();
-                    System.out.println("La lista se ha limpiado!\n");
-                    break;
+                if(grupo.vacio())
+                    System.out.println("No hay elementos! ");
+                else
+                {
+                    System.err.println("Lista del grupo invertida!:\n");
+                    grupo.mostrarInverso();
+                    System.out.println("\n");
+                }
+                break;
                         
-                    case 9: 
-                    System.out.println("Saliendo....\n");
+                case 8:
+                    InputStream ins  = new FileInputStream("Datos.txt");
+                    Scanner obj = new Scanner(ins);
+                    while (obj.hasNextLine()) 
+                    {
+                        grupo.insertar(obj.nextLine());
+                    }
                 break;
 
+                    case 9: //guardar datos en archivo Datos.txt
+
+                        if(grupo.vacio() == true)
+                        {
+                            System.out.println("Saliendo...\n");
+                        }
+                        else
+                        {
+                            System.out.println("Guardando datos en el archivo Datos.txt...\n");
+                            grupo.guardarEnArchivo("Datos.txt");  // Llamada al método para guardar la lista
+                            System.out.println("Datos guardados. Saliendo....\n");
+                        }
+
+                    break;
+                    
+                    
             }
         }while(opc != 9);
         //fin del main
@@ -101,17 +129,25 @@ public class EJ6 {
     public static void menu()
     {
 
-        System.out.println("||-------------------Listas dobles-------------------||\n");
+        System.out.println("\n||-------------------Listas dobles-------------------||\n");
         System.out.println("1 -> Insertar"); 
         System.out.println("2 -> Mostrar");
         System.out.println("3 -> Insertar inicio"); 
         System.out.println("4 -> Bucar");
         System.out.println("5 -> Insertar dentro de lista");
         System.out.println("6 -> Borrar");
-        System.out.println("7 -> Reiniciar");
+        System.out.println("7 -> Mostrar inverso");
+        //System.out.println("7 -> Reiniciar");
+        System.out.println("8 -> Leer datos de archivo"); 
         System.out.println("9 -> Salir"); 
         System.out.println("\n||-------------------------------------------------||\n");
 
     }
 
 } 
+
+/*
+!-----------------Tarea--------------------
+ * limpiar el codigo
+
+ */

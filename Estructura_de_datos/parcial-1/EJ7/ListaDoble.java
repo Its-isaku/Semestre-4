@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class ListaDoble
 {
     private NodoEJ6 inicio;
@@ -200,6 +204,34 @@ public class ListaDoble
             return  true;
         else
             return false;
+    }
+
+    public void guardarEnArchivo(String nombreArchivo) throws IOException 
+    {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(nombreArchivo))) 
+        {
+            NodoEJ6 actual = inicio; // Comenzamos desde el nodo inicial
+            while (actual != null) {
+                escritor.write(actual.getElem()); // Escribir el dato del nodo en el archivo
+                escritor.newLine(); // Nueva línea para cada dato
+                actual = actual.getnext(); // Mover al siguiente nodo
+            }
+            escritor.close(); // Cerrar el archivo para liberar recursos
+        }
+    }
+
+    public void mostrarInverso()
+    {
+        if(inicio != null)
+        {
+            NodoEJ6 i = fin;
+
+            while(i != null)
+            {
+                System.out.println(i.getElem());
+                i = i.getback();
+            }
+        }
     }
 }
 

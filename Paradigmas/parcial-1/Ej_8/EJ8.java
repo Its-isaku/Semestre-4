@@ -13,7 +13,7 @@ public class EJ8
         Scanner scanner = new Scanner(System.in);
         String nombre;
         boolean correcto = false;
-
+        int edad = 0;
         Metodos.saludo();
         Metodos.Adios();
 
@@ -23,10 +23,22 @@ public class EJ8
         nombre = scanner.nextLine();
         correcto = Valida.StrVacio(nombre);
 
-        }while(correcto == false);
+        }while(correcto == true || Valida.SoloLetras(nombre) == false);
+
+        do{
+        System.out.println("Dame tu edad: ");
+        edad = Integer.parseInt(scanner.nextLine());
+        }while(Valida.positivos(edad) == false);
+        
     }
 
     //Funciones
 
-
 }
+
+/*
+---Tarea---
+*Limite de edad (100)
+*que no este vacio
+
+*/

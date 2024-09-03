@@ -20,19 +20,24 @@ public class EJ6 {
             switch (opc)
             {
                 case 1:
-                System.out.print("Nombre para agragar: ");
-                nombre = leer.nextLine();
-                grupo.insertar(nombre);
-                System.out.println("\n");
+                    System.out.print("Nombre para agragar: ");
+                    nombre = leer.nextLine();
+                    grupo.insertar(nombre);
+                    System.out.println("\n");
                 break;
 
                 case 2:
-                System.err.println("Lista del grupo:\n");
-                grupo.mostrar();
-                System.out.println("\n");
+                    if(grupo.vacio() == true)
+                        System.out.println("No hay elementos! ");
+                    else
+                    {
+                        System.err.println("Lista del grupo:\n");
+                        grupo.mostrar();
+                        System.out.println("\n");
+                    }
                 break;
 
-               /*  case 3:
+/*              case 3:
                 System.out.print("Nombre para insertar al inicio: ");
                 nombre = leer.nextLine();
                 grupo.InsertarInicio(nombre);
@@ -53,13 +58,29 @@ public class EJ6 {
                 nombre = leer.nextLine();
                 grupo.InsertarEnMedio(nombre, colado);
                 break;
-
+*/
                 case 6:
+                if(grupo.vacio() == true)
+                    System.out.println("No hay elementos para borrar!");
+                else{
                     System.out.println("nombre a borrar: ");
                     nombre = leer.nextLine();
-                    grupo.Borrar(nombre);
+
+                    if(grupo.Borrar(nombre) == true)
+                        System.out.println("Borrado! ");
+                    else
+                        System.out.println("Elemento no encontrado! ");
+
+                    
+                    System.out.println("\n");
+                    }
                 break;
-                */
+
+                case 7:
+                grupo.limpiar();
+                System.out.println("La lista se ha limpiado!\n");
+                break;
+                
                 case 9: 
                 System.out.println("Saliendo....\n");
                 break;
@@ -79,12 +100,12 @@ public class EJ6 {
         System.out.println("3 -> Insertar inicio");
         System.out.println("4 -> Bucar");
         System.out.println("5 -> Insertar dentro de lista");
+        */
         System.out.println("6 -> Borrar");
-         */
+        System.out.println("7 -> Reiniciar");
         System.out.println("9 -> Salir"); 
         System.out.println("\n||-------------------------------------------------||\n");
 
     }
 
 }
-

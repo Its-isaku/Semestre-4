@@ -36,7 +36,6 @@ public class ListaDoble
 
     public void insertar(String Elem)
     {
-        //System.out.println("elemento recibido: " + elem);
         NodoEJ6 nuevo = new NodoEJ6();
         nuevo.setElem(Elem);
     
@@ -44,7 +43,7 @@ public class ListaDoble
         if (inicio == null)// lista vacia
         {
             inicio = nuevo;
-            fin = null;
+            fin = nuevo;
         }
         else
         {
@@ -69,10 +68,6 @@ public class ListaDoble
                 System.out.println(i.getElem());
                 i = i.getnext();
             }
-        }
-        else
-        {
-            System.err.println("La lisat esta vacia!\n");
         }
     }
 
@@ -148,43 +143,64 @@ public class ListaDoble
             System.out.println("El elemento no se esncuentra en la lista\n");
     }
 
-    public void Borrar(String Elem)
+    public boolean Borrar(String Elem)
     {
         boolean estado = false;
         NodoEJ6 i = inicio;
-        NodoEJ6 ant = inicio;
 
-        while( i != null)
+        while( i != null && estado == false)
         {
             if(Elem.equals(i.getElem()))
             {
-                if (i == inicio)
+                estado = true;
+
+                if(inicio == fin)
+                { 
+                    inicio = fin = null;
+                }
+                else if (i == inicio)
                 {
                     inicio = inicio.getnext();
                     i.setnext(null);
+                    inicio.setback(null);
                 } 
                 else
                 {
-                    if(i == fin)
-                        fin = ant;
-                    ant.setnext(i.getnext());
-                    i.setnext(null);
+                    if(i == fin)//Borra el ultimo
+                    {
+                        fin = fin.getback();
+                        i.setback(null);
+                        fin.setnext(null);
+                    }
+                    else// enmedio
+                    {
+                        i.getnext().setback(i.getback());
+                        i.getback().setnext(i.getnext());
+                        i.setnext(null);
+                        i.setback(null);
+                    }
                 }
                 
-
-                System.out.println("El elemento fue borrado de la lista.\n");
-                i = null;
                 estado = true; 
             }
-            else
-            {
-                if(i != inicio)
-                    ant = ant.getnext();
+            else i = i.getnext();
 
-                i = i.getnext();
-            }
         }
-        if (estado == false)
-            System.out.println("El elemento no se esncuentra en la lista\n");
+        return estado;
+    }
+
+    public void limpiar()
+    {
+        inicio = fin = null;
+    }
+
+    public boolean vacio()
+    {
+        if(inicio == fin && inicio == null)
+            return  true;
+        else
+            return false;
     }
 }
+
+

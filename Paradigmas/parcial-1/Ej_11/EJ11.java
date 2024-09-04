@@ -45,8 +45,9 @@ public class EJ11
             System.out.println((i) * -1);
             i++;
         }while(i <= ran);
-    }
 
+        System.out.println("fin");
+    }
 
     //Librerias
 

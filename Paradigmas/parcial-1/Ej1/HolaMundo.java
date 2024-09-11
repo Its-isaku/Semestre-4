@@ -6,10 +6,6 @@ public class HolaMundo
     {
 
         Scanner scanner = new Scanner(System.in);
-        
-        /*
-        char letra;
-        */
 
         char[] iniciales = new char[10];
         String nombre;
@@ -17,14 +13,6 @@ public class HolaMundo
         String materno;
         byte aa ,mm, dd;
         boolean bisiesto;
-
-        /*
-        byte edad;
-        float promedio;
-        Double valor;
-        int numero;
-        boolean continuar;
-        */
         
         System.out.println("--------------------------\n");
         System.out.println("Ejercicio 1\n");
@@ -60,13 +48,6 @@ public class HolaMundo
             dd = scanner.nextByte();
 
             }while((dd < 1 || dd > Ver_dias_mes));
-            
-
-
-        /*
-        System.out.println("letra: ");
-        letra = scanner.next().charAt(0);
-        */
 
         iniciales[0] = paterno.toUpperCase().charAt(0);
         iniciales[1] = ' ';
@@ -131,13 +112,6 @@ public class HolaMundo
         {
             System.out.println("EL anio no es bisiesto");
         }
-        
-        
-        /*
-        System.out.println(letra);
-        */
-                
-
     } 
 
     public static void Desplear_arreglo(char[] a)

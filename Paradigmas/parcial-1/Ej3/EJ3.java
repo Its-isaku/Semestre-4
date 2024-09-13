@@ -16,7 +16,7 @@ public class EJ3
         String materno;
         
         System.out.println("--------------------------\n");
-        System.out.println("Ejercicio 2\n");
+        System.out.println("Ejercicio 3\n");
         System.out.println("--------------------------\n");
         
         do
@@ -63,7 +63,7 @@ public class EJ3
 
     }
     
-    // Funciones
+    // metodo para desplegar el arreglo
     public static void Desplear_arreglo(char[] a)
     {
         for (int i = 0; i < a.length; i++)
@@ -71,6 +71,7 @@ public class EJ3
         
     }
 
+    //metodo para verificar que no arrojen numeros
     public static boolean NoNum(String cadena)
     {
         for(int index = 0; index < cadena.length(); index++)
@@ -85,6 +86,7 @@ public class EJ3
 
     }
 
+    // metod para verificar que solo arrojen letras
     public static boolean SoloLetras(String cadena)
     {
         for(int index = 0; index < cadena.length(); index++)

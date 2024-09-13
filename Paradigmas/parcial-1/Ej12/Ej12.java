@@ -23,6 +23,7 @@ public class Ej12
             edad = Integer.parseInt(scanner.nextLine());
         }while(edad < 0 || edad >= 120);
         
+        //calculo el costo de la visa
         if (edad < 18) System.out.println("eres menor de edad!\n");
         else 
             if (edad >= 18 && edad <= 30) 
@@ -33,6 +34,8 @@ public class Ej12
                 System.out.println("eres de la tercera edad!\n");
 
                 System.out.println("||----------------------------------------------------------------||\n");
+        
+        // bucle para pedir nacionalidad
         do
         {
             System.out.println("Nacionalidad MEX-Mexico, USA-EstadosUnidos, CHI-China, KR-Corea");
@@ -43,6 +46,7 @@ public class Ej12
         dinero = Float.parseFloat(scanner.nextLine());
         System.out.println("\n");
 
+        // switch para seleccionar el pais
         switch(siglas)
         {
             case "MEX" -> pais = "Mexico\n"; 

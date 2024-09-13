@@ -17,6 +17,7 @@ public class EJ6
         int oportunidades = 5;
         boolean acerto = false;
         
+        // bucle para preguntar por numero
         do
         {
             System.out.println("Dame un numero: ");
@@ -31,6 +32,7 @@ public class EJ6
                 else System.out.println("Te pasaste de la raya! \n");
             }
 
+            // si llega a 0 pierdes
             oportunidades--;
 
         }while(!acerto && oportunidades > 0 );

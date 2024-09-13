@@ -1,8 +1,6 @@
 // Librerias
 import java.util.Scanner;
 
-
-
 // Clase principal
 public class EJ2 
 {
@@ -65,7 +63,7 @@ public class EJ2
 
     }
     
-    // Funciones
+    // metodo para desplegar el arreglo
     public static void Desplear_arreglo(char[] a)
     {
         for (int i = 0; i < a.length; i++)
@@ -73,6 +71,7 @@ public class EJ2
         
     }
 
+    //Metodo para verificar que no contenga numeros
     public static boolean NoNum(String cadena)
     {
         for(int index = 0; index < cadena.length(); index++)
@@ -87,6 +86,7 @@ public class EJ2
 
     }
 
+    // metodo para verificar que solo den letras
     public static boolean SoloLetras(String cadena)
     {
         for(int index = 0; index < cadena.length(); index++)

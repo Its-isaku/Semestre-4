@@ -10,9 +10,6 @@ public class Examen
 
         String nombre = " ";
         int contador = 0;
-        String vocales = "AEIOU";
-        char VerChar;
-        char VerVocales;
 
         //pide el nombre del usuairo
         System.out.println("Dame tu nombre: ");

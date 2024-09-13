@@ -1,5 +1,6 @@
 public class Valida 
 {
+    // metodo para validar si es vacio
     public static boolean StrVacio(String elem)
     {
         if(elem.length() ==  0)
@@ -9,6 +10,7 @@ public class Valida
 
     }
 
+    // metodo para validar si son letras
     public static boolean SoloLetras(String cadena)
     {
         int ultimo =cadena.length() -1;
@@ -37,6 +39,7 @@ public class Valida
         return  true;
     }
 
+    // metodo para validar si es un numero positivo
     public static boolean positivos(int numero)
     {
         if(numero > 0) return true;

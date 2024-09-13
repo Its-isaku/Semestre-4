@@ -7,6 +7,7 @@ public class HolaMundo
 
         Scanner scanner = new Scanner(System.in);
 
+        //Creo variables
         char[] iniciales = new char[10];
         String nombre;
         String paterno;
@@ -18,15 +19,18 @@ public class HolaMundo
         System.out.println("Ejercicio 1\n");
         System.out.println("--------------------------\n");
 
+        //pido el nombre del usuario
         System.out.println("Nombre: ");
         nombre = scanner.next();
 
+        //Pido apellido paterno del  usuario
         System.out.println("Apellido paterno: ");
         paterno = scanner.next();
-
+        //Pido apellido materno del usuario
         System.out.println("Apellido materno: ");
         materno = scanner.next();
 
+        //pido fecha de nacimiento del usuario
         System.out.println("Dame tu año de nacimiento: ");
         System.out.println("el anio debe ser ultimos 2 digitos: ");
         do{
@@ -34,6 +38,7 @@ public class HolaMundo
         aa = scanner.nextByte();
         }while((aa < 1 || aa > 99) && (aa + "").length()<2);
 
+        //verifico si es bisiesto
         bisiesto = aa % 4 == 0;
 
         do{
@@ -41,6 +46,7 @@ public class HolaMundo
         mm = scanner.nextByte();
         }while(mm < 1 || mm > 12);
 
+        //Llamo a función para verificar los dias del mes y ver si es bisiesto
         int Ver_dias_mes = VerificarDias(mm, bisiesto);
 
         do{
@@ -49,6 +55,7 @@ public class HolaMundo
 
             }while((dd < 1 || dd > Ver_dias_mes));
 
+        //Alojo datos en el arreglo
         iniciales[0] = paterno.toUpperCase().charAt(0);
         iniciales[1] = ' ';
         iniciales[2] = materno.toUpperCase().charAt(0);
@@ -95,6 +102,7 @@ public class HolaMundo
 
         System.out.println("\n");
 
+        //Imprimo resultados
         System.out.println("--------------------------\n");
         System.out.println("Comporbando datos:\n");
         System.out.println(nombre +  " "  + paterno + " " + materno + "\n");
@@ -114,6 +122,7 @@ public class HolaMundo
         }
     } 
 
+    // Metodo para desplegar arreglo
     public static void Desplear_arreglo(char[] a)
     {
         for (int i = 0; i < a.length; i++)
@@ -123,6 +132,7 @@ public class HolaMundo
     }
 
 
+    // Metodo para verificar los dias del mes segun el mes y el año
     public static int VerificarDias(int mes, boolean bisiesto)
     {
     

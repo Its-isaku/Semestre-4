@@ -10,6 +10,7 @@ public class Ej14
         Scanner scanner = new Scanner(System.in);
         int hh = 0, mm = 0;
 
+        // bucle para generar reloj
         for (int i = 0; i < 24; i++) 
         {
             for (int j = 0; j < 60; j++)

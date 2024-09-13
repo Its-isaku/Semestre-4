@@ -28,6 +28,7 @@ public class EJ13
             if(correcto == false) System.out.println("Baja california empieza con 2...!\n");
         }while(CP.length()!= 5 || correcto == false);
 
+        // bucle para pedir municipalio
         do
         {
             System.out.println("Municipio: ");

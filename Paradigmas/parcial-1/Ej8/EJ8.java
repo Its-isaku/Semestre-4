@@ -8,8 +8,9 @@ public class EJ8
 {
 
     //Main
-    public static void main(String[] args) 
+    public static void main(String[] args)  
     {
+        // Declaro variables
         Scanner scanner = new Scanner(System.in);
         String nombre;
         boolean correcto = false;
@@ -17,6 +18,7 @@ public class EJ8
         Metodos.saludo();
         Metodos.Adios();
 
+        // pregunto el nombre hasta que cumpla las validaciones
         do
         {
         System.out.println("Nombre: ");
@@ -25,6 +27,7 @@ public class EJ8
 
         }while(correcto == true || Valida.SoloLetras(nombre) == false);
 
+        // pregunto la edad hasta que cumpla las validaciones
         do{
         System.out.println("Dame tu edad: ");
         edad = Integer.parseInt(scanner.nextLine());
@@ -35,10 +38,3 @@ public class EJ8
     //Funciones
 
 }
-
-/*
----Tarea---
-*Limite de edad (100)
-*que no este vacio
-
-*/

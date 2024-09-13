@@ -10,11 +10,13 @@ public class EJ5
     //main
     public static void main(String[] args) 
     {
+        // declaro variables
         int valor = (int)(Math.random()*50 + 1);
         int  numero = 0;
         int oportunidades = 3;
         Scanner scanner = new Scanner(System.in);
         
+        // bucle para preguntar por numero
         do
         {
             System.out.println("Dame un numero: ");
@@ -26,6 +28,7 @@ public class EJ5
             if(numero > valor)
                 System.out.println("Te pasaste de la raya! \n");
 
+                // si el contador llega a 0 pierdes
             oportunidades--;
 
         }while(numero != valor && oportunidades != 0);

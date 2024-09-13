@@ -31,15 +31,17 @@ public class EJ4
 
         Scanner scanner = new Scanner(System.in);
 
+        // Pregunto cuanto dinero tiene el usueario
         System.out.println("cuanto dinero tienes? ");
         dinero = Integer.parseInt(scanner.nextLine());
         System.out.println("tu salado es: $" + dinero + "\n");
 
+        // bucle para cobrar 
         while( dinero > 0 && opc != 9)
         {
+            menu();
             System.out.print("Elige una opcion: ");
             opc = Integer.parseInt(scanner.nextLine());
-            menu();
 
             switch (opc)
             {

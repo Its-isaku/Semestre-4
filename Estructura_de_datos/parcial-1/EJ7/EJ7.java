@@ -145,9 +145,3 @@ public class EJ7 {
     }
 
 } 
-
-/*
-!-----------------Tarea--------------------
- * limpiar el codigo
-
- */

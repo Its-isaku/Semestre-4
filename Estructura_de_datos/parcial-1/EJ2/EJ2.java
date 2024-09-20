@@ -14,7 +14,6 @@ public class EJ2
         do{
 
             // Pedir un dato al usuario y su posicion
-            @SuppressWarnings("resource")
             Scanner scanner = new Scanner (System.in);
 
                 

@@ -8,7 +8,7 @@ public class Principal
         System.out.println("||--------------------Ejercicio 8--------------------||\n");
 
         Scanner leer = new  Scanner(System.in);
-        Stack_FiFo grupo = new Stack_FiFo();
+        Queue_FIFO grupo = new Queue_FIFO();
         String nombre;
 
         int opc = 0;
@@ -34,7 +34,7 @@ public class Principal
                     grupo.Mostrar();
                     System.out.println("\n");
                 }
-/* 
+
                 case 3 -> 
                 {
                     System.out.print("Nombre para buscar: ");
@@ -42,7 +42,7 @@ public class Principal
                     System.out.println("\n");
                     grupo.Buscar(nombre);
                 }
-*/
+                
                 case 4 -> 
                 {
                     grupo.Borrar();

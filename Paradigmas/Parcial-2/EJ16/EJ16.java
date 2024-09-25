@@ -9,21 +9,22 @@ public class EJ16
 
         //Variables
         Scanner scanner = new Scanner(System.in);
-        short edad = PedirEdad();
-        char Genero = PedirGenero();
+        short edad = 0;
+        char Genero = ' ';
         float KG = 0.0f; //masa corporal en KG
         float H = 0.0f; // Altura
         float IMC = 0.0f; 
-        String status = tablaIMC(IMC, edad, Genero);
+        String status = "";
 
-        PedirEdad();
-        PedirGenero();
+        edad = PedirEdad();
+        Genero = PedirGenero();
         System.out.print("Peso en KG: ");
         KG = Float.parseFloat(scanner.nextLine());
         System.out.print("Estatura en M: ");
         H = Float.parseFloat(scanner.nextLine());
 
         IMC = IMCGral(KG, H);
+        status = tablaIMC(IMC, edad, Genero);
         toString(KG, H, IMC, Genero, edad, status);
         
 
@@ -74,6 +75,8 @@ public class EJ16
     public static String tablaIMC(float IMC, short edad, char Genero)
     {
         String status = "";
+
+        // con if else 
         if(Genero == 'M')
         {
             if (edad < 19)
@@ -122,53 +125,19 @@ public class EJ16
                 else status = "En peligro";
             }
         }
+        // Con ternarios
         else if(Genero == 'H')
         {
             if (edad < 19)
-            {
-                if(IMC > 27) status = "Obesidad";
-                else if(IMC > 22) status = "Sobrepeso";
-                else if(IMC > 17) status = "Normal";
-                else if(IMC > 12) status = "Buena";
-                else if(IMC == 12) status = "Exelente";
-                else status = "En peligro";
-            }
+                status = IMC > 27 ? "Obesidad" :IMC > 22 ? "Sobrepeso" : IMC > 17 ? "Normal" : IMC > 12 ? "Buena" : IMC == 12 ? "Exelente" : "En peligro";
             else if(edad >= 20 && edad < 29)
-            {
-                if(IMC > 28) status = "Obesidad";
-                else if(IMC > 23) status = "Sobrepeso";
-                else if(IMC > 18) status = "Normal";
-                else if(IMC > 13) status = "Buena";
-                else if(IMC == 13) status = "Exelente";
-                else status = "En peligro";
-            }
+                status = IMC > 28 ? "Obesidad" :IMC > 23 ? "Sobrepeso" : IMC > 18 ? "Normal" : IMC > 13 ? "Buena" : IMC == 13 ? "Exelente" : "En peligro";
             else if(edad >= 30 && edad < 39)
-            {
-                if(IMC > 29) status = "Obesidad";
-                else if(IMC > 24) status = "Sobrepeso";
-                else if(IMC > 19) status = "Normal";
-                else if(IMC > 14) status = "Buena";
-                else if(IMC == 14) status = "Exelente";
-                else status = "En peligro";
-            }
+                status = IMC > 29 ? "Obesidad" :IMC > 24 ? "Sobrepeso" : IMC > 19 ? "Normal" : IMC > 14 ? "Buena" : IMC == 14 ? "Exelente" : "En peligro";
             else if(edad >= 40 && edad < 49)
-            {
-                if(IMC > 30) status = "Obesidad";
-                else if(IMC > 25) status = "Sobrepeso";
-                else if(IMC > 20) status = "Normal";
-                else if(IMC > 15) status = "Buena";
-                else if(IMC == 15) status = "Exelente";
-                else status = "En peligro";
-            }
+                status = IMC > 30 ? "Obesidad" :IMC > 25 ? "Sobrepeso" : IMC > 20 ? "Normal" : IMC > 15 ? "Buena" : IMC == 15 ? "Exelente" : "En peligro";
             else
-            {
-                if(IMC > 31) status = "Obesidad";
-                else if(IMC > 26) status = "Sobrepeso";
-                else if(IMC > 21) status = "Normal";
-                else if(IMC > 16) status = "Buena";
-                else if(IMC == 16) status = "Exelente";
-                else status = "En peligro";
-            }
+                status = IMC > 31 ? "Obesidad" :IMC > 26 ? "Sobrepeso" : IMC > 21 ? "Normal" : IMC > 16 ? "Buena" : IMC == 16 ? "Exelente" : "En peligro";
         }
         return status;
     }

@@ -1,10 +1,10 @@
-public class Stack_FiFo 
+public class Queue_FIFO 
 {
     private Nodo inicio;
     private Nodo fin;
     
     //valores iniciales
-    public Stack_FiFo()
+    public Queue_FIFO()
     {
         inicio = null;
         fin = null;
@@ -57,6 +57,30 @@ public class Stack_FiFo
                 System.out.println(i.getElem());
                 i = i.getnext();
             }
+        }
+
+        public void Buscar(String Elem)
+        {
+    
+            boolean estado = false;
+            Nodo i = inicio;
+    
+            while( i != null)
+            {
+                if(Elem.equals(i.getElem()))
+                {
+                    System.out.println("El elemento se encuentra en la lista.\n");
+                    i = null;
+                    estado = true; 
+                }
+                else
+                {
+                    i = i.getnext();
+                }
+            }
+            if (estado == false)
+                System.out.println("El elemento no se esncuentra en la lista\n");
+            
         }
     }
 

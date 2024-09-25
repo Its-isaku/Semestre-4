@@ -1,0 +1,10 @@
+isai,06:00
+danny,06:02
+endy,06:03
+alejandra,06:04
+abel,06:05
+edith,06:06
+magdaleno,06:07
+aaron,06:11
+chick,06:12
+nacho,06:15

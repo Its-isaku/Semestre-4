@@ -1,0 +1,10 @@
+pepe,06:01
+juan,06:04
+oscar,06:06
+guillermo,06:07
+laura,06:08
+ezequiel,06:17
+paola,06:20
+issac,06:21
+sofia,06:22
+gareth,06:30

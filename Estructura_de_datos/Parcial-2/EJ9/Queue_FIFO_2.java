@@ -10,7 +10,7 @@ public class Queue_FIFO_2
     //valores iniciales
     public Queue_FIFO_2()
     {
-        inicio = null;
+        inicio = null; 
         fin = null;
     }
 
@@ -88,6 +88,53 @@ public class Queue_FIFO_2
                 System.out.println("El elemento no se esncuentra en la lista\n");
             
         }
+
+        public void Combinar(Queue_FIFO_2 Fila1, Queue_FIFO_2 Fila2)
+        {
+            Nodo i = Fila1.inicio;
+            Nodo j = Fila2.inicio;
+            int Turno = 1;
+            // se asume que ambas filas estan ordenadas
+            while(i != null && j != null)
+            {
+                if(i.getHora().isBefore(j.getHora()))
+                {
+                    this.Instertar(i.getElem(), Turno, i.getHora());
+                    Turno++;
+                    i = i.getnext();
+                }
+                else if(i.getHora().equals(j.getHora()))
+                {
+                    this.Instertar(i.getElem(), Turno, i.getHora());
+                    Turno++;
+                    this.Instertar(j.getElem(), Turno, j.getHora());
+                    Turno++;
+                    i = i.getnext();
+                    j = j.getnext();
+                }
+                else 
+                {
+                    this.Instertar(j.getElem(), Turno, j.getHora());
+                    Turno++;
+                    j = j.getnext();
+                }
+            }
+            // si al terminar hay elementos en alguna fila, se agregan al final
+            while(i != null)
+            {
+                this.Instertar(i.getElem(), Turno, i.getHora());
+                Turno++;
+                i = i.getnext();
+            }
+            while(j != null)
+            {
+                this.Instertar(j.getElem(), Turno, j.getHora());
+                Turno++;
+                j = j.getnext();
+            }
+        }
+
+
     }
 
 

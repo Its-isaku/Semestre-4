@@ -72,6 +72,14 @@ public class Principal
                     System.out.println("\n");
                 }
 
+                case 5->
+                {
+                    Unifila.Combinar(Fila1, Fila2);
+                    Unifila.Mostrar();
+                    System.out.println();
+
+                }
+
                 case 9 -> System.out.println("Saliendo....\n");
 
             }
@@ -80,15 +88,15 @@ public class Principal
     }
 
     //Menu
-    public static void menu()
+    public static void menu() 
     {
 
         System.out.println("||---------------------Stack FiFo--------------------||\n");
         System.out.println("1 -> Insertar"); 
-        System.out.println("2 -> Mostrar");
+        System.out.println("2 -> Mostrar separadas");
         System.out.println("3 -> Bucar");
-        System.out.println("4 -> Borrar");
-        System.out.println("5 -> Cargar datos desde archivo");
+        System.out.println("4 -> Borrar de fila 1");
+        System.out.println("5 -> Unificar");
         System.out.println("9 -> Salir"); 
         System.out.println("\n||---------------------------------------------------||\n");
 

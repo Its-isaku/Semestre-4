@@ -1,4 +1,5 @@
 //Librerias
+import java.util.Random;
 import java.util.Scanner;
 
 public class EJ18 
@@ -52,10 +53,10 @@ public class EJ18
         System.out.println("\n||-----------------------------------------------------------------||\n");
         //Prrueba con arreglos
 
-        int[] array = new int[15]; 
-        iniciar(array);
-        RellenarSinRepetidos(array);
-        RellenarSinRepetidos_Recursivo(array, num);
+        int[] array = new int[20]; 
+        //iniciar(array);
+        //RellenarSinRepetidos(array);
+        RellenarSinRepetidos_Recursivo(array);
         mostrar(array);
     }
 
@@ -124,32 +125,40 @@ public class EJ18
 
     }
 
-    public static void RellenarSinRepetidos_Recursivo(int[] f, int i)
+    public static void RellenarSinRepetidos_Recursivo(int[] respuesta) 
     {
-        // Condición de parada: cuando la posición i es igual al tamaño del array
-        if (i >= f.length) {
-            return;
+		for (int i = 0; i < respuesta.length; i++) 
+        {
+            respuesta[i] = gen(respuesta);
         }
+	}    
 
-        // Generar número aleatorio
-        int num = (int) (Math.random() * 15 + 1);
+    public static int gen(int [] e)
+    {
         boolean repetido = false;
-
-        // Verificar si el número ya está en el arreglo
-        for (int j = 0; j < i; j++) {
-            if (f[j] == num) {
+        Random ra = new Random();	
+		int numero = ra.nextInt(e.length + 1);
+        
+        // verufica que no se repita
+        for (int i = 0; i < e.length ; i++)
+        { 
+            if(numero == e[i])
+            {
                 repetido = true;
                 break;
             }
         }
 
-        // Si el número no se repite, lo agregamos
-        if (!repetido) {
-            f[i] = num;
-            RellenarSinRepetidos_Recursivo(f, i + 1);  // Llamada recursiva con el siguiente índice
-        } else {
-            // Si el número se repite, llamamos de nuevo con el mismo índice i
-            RellenarSinRepetidos_Recursivo(f, i);
+        if(repetido != true)
+        {
+            //System.out.println("asignado: " + numero);
+			return numero;
+		}
+        else 
+        {
+            //System.out.println("repetido: " + numero);
+			return gen(e);
         }
-    }    
+    }
+
 }

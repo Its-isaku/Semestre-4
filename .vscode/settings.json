@@ -1,6 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "Paradigmas/Parcial-2/EJ19/json-simple-1.1.1.jar"
-    ]
-}

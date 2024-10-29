@@ -1,8 +1,8 @@
 
-public class Nodo 
+public class NodoStack 
 {
     private String Elem;
-    private Nodo next; 
+    private NodoStack next; 
 
     public void setElem(String variable) 
     {
@@ -14,11 +14,11 @@ public class Nodo
         return Elem;
     }
 
-    public void setnext(Nodo variable)
+    public void setNext(NodoStack variable)
     {
         next = variable;
     }
-    public Nodo getnext()
+    public NodoStack getNext()
     { 
         return next;
     }

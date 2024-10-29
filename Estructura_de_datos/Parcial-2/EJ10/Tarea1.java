@@ -6,7 +6,7 @@
  * 1. Dado 1 al 4 avanza
  * 2. Dado cae 5: elige si avanza o no
  * 3. dado ces 6: avanza o regresa a ultima posicion
- * 4. Escaleras: pos 6 sube a 11, pos 15 sube a 18 , pos 8 sube a 20 (si da tiempo, Escaleras aleatorias)
+ * 4. Escaleras: pos 7 sube a 11, pos 15 sube a 18 , pos 8 sube a 20 (si da tiempo, Escaleras aleatorias)
  * 5. Serpientes pos 24 baja a 17, pos 21 baja a 10, pos 9 baja a 2(si da tiempo, Serpientes aleatorias)
  * 6. Si al tirar se pasa de puntos de la meta, debe regresarse
  * 7. Gana el que llegue exacto a la meta
@@ -32,7 +32,7 @@ public class Tarea1
         int[][] matriz = new int[5][5];
         int inicio = 25;
         String respuesta = "";
-
+        
         System.out.println("\n||---------------------Ejercicio 10, serpientes y escaleras---------------------||\n");
 
         do
@@ -51,71 +51,50 @@ public class Tarea1
                 }
 
                 case 2 ->
-                {
+                {   
+                    // se genera un dado aleatorio
                     int Dado = (int)(Math.random() * 6) + 1;
+                    System.out.println("Dado: " + Dado);
                     System.out.println("Turno del juador: " + turno);
 
-                    if(Dado == 5)
+                    // se verifica el numero y se realiza la accion segun el caso
+                    switch (Dado) 
                     {
-                        System.out.print("Avanzas o te quedas? S/N ");
-                        respuesta = scanner.nextLine().toUpperCase();
-                        if ("S".equals(respuesta))
-                            turno = avanza(turno, Dado, Jugador_1, Jugador_2, Jugador_3);
-                        else// no avanza asi que cambia de turno
-                            turno = CambiaTurno(turno);
-                    }
-                    else // no cayo 5
-                        if(Dado == 6)
+                        case 5 -> 
+                        {
+                            System.out.print("Avanzas o te quedas? S/N ");
+                            respuesta = scanner.nextLine().toUpperCase();
+                            if ("S".equals(respuesta))
+                                turno = avanza(turno, Dado, Jugador_1, Jugador_2, Jugador_3);
+                            else// no avanza asi que cambia de turno
+                                turno = CambiaTurno(turno);
+                        }
+
+                        case 6 -> 
                         {
                             System.out.print("Avanzas o regresas? A/R ");
                             respuesta = scanner.nextLine().toUpperCase();
-
                             if ("A".equals(respuesta)) // avanza
                                 turno = avanza(turno, Dado, Jugador_1, Jugador_2, Jugador_3);
                             else// borrar ultimo
                                 turno = regresa(turno, Jugador_1, Jugador_2, Jugador_3);
                         }
-                        else // cae 1 a 4
+                        default -> // cae 1 a 4
                             turno = avanza(turno, Dado, Jugador_1, Jugador_2, Jugador_3);
+                    }
+                    // no cayo 5 o 6
 
-
-                System.out.println("\nposiciones del jugador 1 ");
-                Jugador_1.Mostrar();
-                System.out.println("\nposiciones del jugador 2 ");
-                Jugador_2.Mostrar();
-                System.out.println("\nposiciones del jugador 3 ");
-                Jugador_3.Mostrar();
-                System.out.println();
-                Tablero(matriz, inicio);
-                System.out.println();
-
+                    System.out.println("\nposiciones del jugador 1 ");
+                    Jugador_1.Mostrar();
+                    System.out.println("\nposiciones del jugador 2 ");
+                    Jugador_2.Mostrar();
+                    System.out.println("\nposiciones del jugador 3 ");
+                    Jugador_3.Mostrar();
+                    System.out.println();
+                    Tablero(matriz, inicio);
+                    System.out.println();
                 }
-
-                case 3 ->
-                {
-
-                }
-
-                case 4 ->
-                {
-
-                }
-
-                case 5 ->
-                {
-
-                }
-
-                case 6 ->
-                {
-
-                }
-
-                case 7 ->
-                {
-
-                }
-
+                
                 case 9 -> System.out.println("Saliendo.....");
                 default -> System.out.println("Opcion no valida!");
             }
@@ -123,21 +102,19 @@ public class Tarea1
             //Tablero(matriz, inicio);
             
         } while(!Meta(Jugador_1, Jugador_2, Jugador_3) && opc != 9); // NO has llegado a la meta
-        System.out.println("\nalguien ya gano");
+
+        String Msj = Jugador_1.getFin().getElem() == 25 ? "El ganador es el jugador 1!" : (
+                    Jugador_2.getFin().getElem() == 25 ? "El ganador es el jugador 2!" : (
+                    Jugador_3.getFin().getElem() == 25 ? "El ganador es el jugador 3!" : "Empate!"));
+
+        System.out.println("\n" + Msj + "\n");
     }
 
     public static boolean Meta(Lista_DobleSE Jugador_1, Lista_DobleSE Jugador_2, Lista_DobleSE Jugador_3)
 {
-    if(Jugador_1.getFin() != null && Jugador_1.getFin().getElem() == 25 ||
-            Jugador_2.getFin() != null && Jugador_2.getFin().getElem() == 25 ||
-            Jugador_3.getFin() != null && Jugador_3.getFin().getElem() == 25)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+        return Jugador_1.getFin() != null && Jugador_1.getFin().getElem() == 25 ||
+                Jugador_2.getFin() != null && Jugador_2.getFin().getElem() == 25 ||
+                Jugador_3.getFin() != null && Jugador_3.getFin().getElem() == 25;
 }
 
     public static void Tablero(int[][] matriz, int inicio)
@@ -155,13 +132,12 @@ public class Tarea1
             for (int j = 0; j < 5; j++) {
                 System.out.print(matriz[i][j] + "\t"); //  \t para formato tabular
             }
-            System.out.println(); // Salto de línea después de cada fila
+            System.out.println(); // Salto de línea después de cada fila    
         }
     }
 
     public static void menu() 
     {
-
         System.out.println("\n||---------------------Stack FiFo--------------------||\n");
         System.out.println("1 -> Iniciar el juego"); 
         System.out.println("2 -> Tirar Dado");
@@ -170,7 +146,6 @@ public class Tarea1
         System.out.println("5 -> Unificar");
         System.out.println("9 -> Salir"); 
         System.out.println("\n||---------------------------------------------------||\n");
-
     }
 
     public static void NuevoJeugo(Lista_DobleSE Jugador_1, Lista_DobleSE Jugador_2, Lista_DobleSE Jugador_3)
@@ -190,7 +165,8 @@ public class Tarea1
                     Jugador_1.Instertar(dado);
                 else
                 {
-                    Jugador_1.Instertar(Jugador_1.getFin().getElem() + dado);
+                    dado = SE(Jugador_1, dado);
+                    Jugador_1.Instertar(dado);
                 }
                 turno = 2;
             }
@@ -201,7 +177,8 @@ public class Tarea1
                     Jugador_2.Instertar(dado);
                 else
                 {
-                    Jugador_2.Instertar(Jugador_1.getFin().getElem() + dado);
+                    dado = SE(Jugador_2, dado);
+                    Jugador_2.Instertar(dado);
                 }
                 turno = 3;
             }
@@ -212,7 +189,8 @@ public class Tarea1
                     Jugador_3.Instertar(dado);
                 else
                 {
-                    Jugador_3.Instertar(Jugador_1.getFin().getElem() + dado);
+                    dado = SE(Jugador_3, dado);
+                    Jugador_3.Instertar(dado);
                 }
                 turno = 1;
             }
@@ -251,5 +229,22 @@ public class Tarea1
     public static int CambiaTurno(int turno)
     {
         return turno == 1? 2 : (turno == 2 ? 3 : 1); 
+    }
+
+    public static int SE(Lista_DobleSE Jugador, int dado)
+    {
+        if((Jugador.getFin().getElem() + dado) > 25)
+            return dado - 25 - (dado - 25);
+            
+        return switch (Jugador.getFin().getElem() + dado) 
+        {
+            case 7 -> 11;
+            case 15 -> 18;
+            case 8 -> 20;
+            case 24 -> 17;
+            case 21 -> 10;
+            case 9 -> 2;
+            default -> Jugador.getFin().getElem() + dado;
+        };
     }
 }

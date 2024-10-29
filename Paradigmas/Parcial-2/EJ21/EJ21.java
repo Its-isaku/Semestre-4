@@ -57,10 +57,6 @@ public class EJ21
         invertir(num);
         invertirRecursivo(num, 0);
 
-
-
-
-
     }
 
     public static int invertir(int n)

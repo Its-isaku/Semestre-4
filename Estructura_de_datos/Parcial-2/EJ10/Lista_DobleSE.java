@@ -76,9 +76,14 @@ public class Lista_DobleSE
 
         public void BorraUltimo()
         {
-            fin = fin.getBack();
-            fin.getnext().setBack(null);
-            fin.setnext(null);
+            if(inicio == fin )
+                inicio = fin = null;
+            else
+            {
+                fin = fin.getBack();
+                fin.getnext().setBack(null);
+                fin.setnext(null);
+            }
         }
 
         public void Mostrar()

@@ -3,17 +3,29 @@ import java.util.Scanner;
 
 public class Principal 
 {
+        public static int mov = 0; //num de movimientos hechos
+        public static int fallos = 0; //num de fallos hechos
     public static void main(String[] args) throws Exception
 {
-        System.out.println("||--------------------Ejercicio 9--------------------||\n");
+        System.out.println("||-------------------Ejercicio 12--------------------||\n");
         Stack_LIFO_2 Grupo1 = new Stack_LIFO_2();
         Stack_LIFO_2 Grupo2 = new Stack_LIFO_2();
         Stack_LIFO_2 Grupo3 = new Stack_LIFO_2();
         Scanner leer = new  Scanner(System.in);
         int opc = 0;
-        String nombre = "";
+        
         
         inicializar(Grupo1);
+
+        System.out.println("|--------------------------------||\n");
+        System.out.println("Contenido de Grupo 1: ");
+        Grupo1.mostrar();
+        System.out.println("\nContenido de Grupo 2: ");
+        Grupo2.mostrar();
+        System.out.println("\nContenido de Grupo 3: ");
+        Grupo3.mostrar();
+        System.out.println("\n||--------------------------------||\n");
+
         do{
             menu();
             System.out.println("Elige: ");
@@ -26,6 +38,7 @@ public class Principal
                     System.out.println("Mover de 1 a 2 | -->");
                     if(!Grupo1.vacia())
                         ValidarMovimientos(Grupo1, Grupo2);
+                        
                 }
 
                 case 2 -> 
@@ -83,7 +96,10 @@ public class Principal
             Grupo3.mostrar();
             System.out.println("\n||--------------------------------||\n");
 
-        }while(opc != 9);
+        }while(opc != 9 || Grupo3.ValidarGanador());
+
+        System.out.println("Juego Terminado con " + mov + " movimientos y " + fallos + " fallos.");
+        System.out.println("\n||--------------------------------||\n");
         //fin del main
     }
 
@@ -116,19 +132,24 @@ public class Principal
         {
             Destino.insertar(Origen.getCabeza().getElem());
             Origen.borrar();
+            mov++;
         }
         else if(Destino.getCabeza().getElem() > Origen.getCabeza().getElem())
         {
             Destino.insertar(Origen.getCabeza().getElem());
             Origen.borrar();
+            mov++;
         }
         else
+        {
             System.out.println("\nMovimiento invalido!");
+            fallos++;
+        }
     }
 
     /*
      ! TAREA
      *  Agregar algun intentificador visual para los numeros en los Stacks
-     * 
+     ? Tarea hecha 
      */
 }

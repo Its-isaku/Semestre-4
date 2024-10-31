@@ -16,10 +16,10 @@ public class ColoresANSI
         "\u001B[37m"  // Blanco
     };
 
-    // Mapa para almacenar el color de cada número
+    // Mapa para almacenar el color de cada numero
     public static final Map<Integer, String> mapaColores = new HashMap<>();
 
-    // Asigna un color único a cada número
+    // Asigna un color unico a cada número
     static 
     {
         for (int i = 0; i < COLORES.length; i++) {

@@ -36,7 +36,8 @@ public class ej23
         int antiguedad;
         puesto aux;
 
-        do{
+        do
+        {
             menu(); //menu hace un valor a opcion (variable global)
             switch (opcion) 
             {
@@ -135,22 +136,9 @@ public class ej23
                     break;
                 }
 
-                case 7 -> 
-                {
-                    
-                }
-
-                case 8 -> 
-                {
-                    
-                }
-
-                case 9 -> 
-                {
-                    System.out.println("Saliendo...");
-                }
+                case 9 -> System.out.println("Saliendo...");
             
-                default -> { System.out.println("Opcion invalida");}
+                default -> System.out.println("Opcion invalida");
             }
 
         }while(opcion!=9);
@@ -196,7 +184,8 @@ public class ej23
     {
         File file  = new File(archivo);
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-        for (puesto puesto : array) {
+        for (puesto puesto : array) 
+        {
             writer.write(puesto.getNum() + ", " + puesto.getNombre() + ", " + puesto.getSalario() + "\n");
         }
         writer.close();

@@ -41,7 +41,7 @@ public class Queue
         int tiempoConsulta;
         if(tipoConsulta.equals("Consulta General"))
             tiempoConsulta = random.nextInt(6) + 5;
-        else
+        else 
             tiempoConsulta = random.nextInt(21) + 10;
         nuevo.setTiempoConsulta(tiempoConsulta);
 

@@ -1,0 +1,20 @@
+IPhone 14,18,998
+Laptop Dell Inspiron 14",14,499
+Audífonos Bose con cancelación de ruido,5,299
+Cámara Canon EOS Rebel,9,999
+Consola Nintendo Switch,7,499
+IPad Air 10.9",15,299
+Televisor OLED 55" LG,23,499
+Bocina inteligente Amazon Echo,1,999
+Proyector Epson,6,799
+Barra de sonido Sony,3,499
+Router Mesh TP-Link Deco,2,999
+Disco duro externo 1TB WD,1,299
+Mouse ergonómico Logitech MX,999,2
+Teclado gaming Razer,1,899
+Cámara de acción GoPro Hero,6,499
+Smartwatch Garmin,4,999
+Monitor curvo Samsung 27",4,299
+Estación de carga inalámbrica,799,9
+Impresora láser Brother,2,899
+Dron DJI Mini,11,499

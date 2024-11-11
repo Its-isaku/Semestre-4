@@ -15,7 +15,7 @@ public class Principal
         int opc = 0;
         
         do
-        {
+        {   
             menu();
             System.out.print("Elige: ");
             opc = Integer.parseInt(scanner.nextLine());
@@ -28,7 +28,7 @@ public class Principal
                     System.out.print("Nombre para agragar: ");
                     nombre = scanner.nextLine();
                     Hospital.Instertar(nombre);
-                }
+                }   
 
                 case 2 -> 
                 {
@@ -47,7 +47,7 @@ public class Principal
 
     //Menu
     public static void menu()
-    {
+    { 
         System.out.println("\n||--------------Stack FiFo-------------||");
         System.out.println("|| 1 -> Insertar                       ||"); 
         System.out.println("|| 2 -> Mostrar Horarios Hospital      ||");
@@ -80,7 +80,7 @@ public class Principal
                 // se verifica si el turno de atencion es mayor a la hora de cierre
                 if(turnoGeneral + tiempoConsulta <= HoraCierre )
                 {
-                    turnoGeneral += tiempoConsulta; // se suma el tiempo de consulta al turno
+                    turnoGeneral += tiempoConsulta; // se suma el tiempo de consulta al turno 
                     System.out.println("Paciente: " + i.getElem() + " Tipo de consulta: " + tipoConsulta + " Hora de atencion: " + turnoGeneral / 60 + ":" + turnoGeneral % 60);
                 }
                 else

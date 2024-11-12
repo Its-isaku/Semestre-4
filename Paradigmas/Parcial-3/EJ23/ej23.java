@@ -1,7 +1,10 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -136,14 +139,37 @@ public class ej23
                     break;
                 }
 
-                case 9 -> System.out.println("Saliendo...");
+                case 7 ->  guardarEmpleados(archivo, empleados); // Guardar empleados
+
+                case 9 ->
+                {
+                    System.out.println("¿Desea guardar los empleados antes de salir? (S/N)");
+                    String respuesta = leer.nextLine().toUpperCase();
+                    if (respuesta.equals("S") || respuesta.isEmpty()) 
+                        guardarEmpleados(archivo, empleados);
+                    System.out.println("Saliendo...");
+                }
             
                 default -> System.out.println("Opcion invalida");
             }
 
         }while(opcion!=9);
 
+    }
 
+    public static void menu()
+    {
+        System.out.println("\n||------------------------Menu------------------------||");
+        System.out.println("|| 1 -> Insertar puestos                              ||");
+        System.out.println("|| 2 -> Mostrar Puestos                               ||");
+        System.out.println("|| 3 -> Guardar puestos                               ||");
+        System.out.println("|| 4 -> Insertar Empleado                             ||");
+        System.out.println("|| 5 -> Mostrar Empleados                             ||");
+        System.out.println("|| 6 -> Dar de baja Empleado                          ||");
+        System.out.println("|| 7 -> Guardar Empleados                             ||");
+        System.out.println("|| 9 -> Salir                                         ||"); 
+        System.out.println("||----------------------------------------------------||\n");
+        opcion = Integer.parseInt(leer.nextLine());
     }
 
     public static void leerArchivo(String archivo, ArrayList<puesto> array) throws Exception
@@ -165,29 +191,59 @@ public class ej23
         }
     }
 
-    public static void menu()
-    {
-        System.out.println("\n||------------------------Menu------------------------||");
-        System.out.println("|| 1 -> Insertar puestos                              ||");
-        System.out.println("|| 2 -> Mostrar Puestos                               ||");
-        System.out.println("|| 3 -> Guardar puestos                               ||");
-        System.out.println("|| 4 -> Insertar Empleado                             ||");
-        System.out.println("|| 5 -> Mostrar Empleados                             ||");
-        System.out.println("|| 6 -> Dar de baja Empleado                          ||");
-        System.out.println("|| 7 -> Guardar Empleados                             ||");
-        System.out.println("|| 9 -> Salir                                         ||"); 
-        System.out.println("||----------------------------------------------------||\n");
-        opcion = Integer.parseInt(leer.nextLine());
-    }
-
     public static void guardarArchivo(String archivo, ArrayList<puesto> array) throws Exception
     {
-        File file  = new File(archivo);
+        File file  = new File(archivo); 
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
         for (puesto puesto : array) 
         {
             writer.write(puesto.getNum() + ", " + puesto.getNombre() + ", " + puesto.getSalario() + "\n");
         }
         writer.close();
+    }
+
+    //? metodos de tarea
+
+    //? Guardar y leer empleados
+    public static void guardarEmpleados(String archivo, ArrayList<empleado> empleados) throws IOException
+    {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(archivo));    //? Crear archivo
+        for (empleado emp : empleados)  //? Recorrer empleados
+            writer.write(emp.getId() + "," + emp.getNombre() + "," + emp.getEstatura() + "," + emp.getTiempo() + "," + emp.getTurno() + "," + emp.getActividad().getNum() + "\n");//? Guardar empleado
+        writer.close(); //? Cerrar archivo
+        System.out.println("Empleados guardados exitosamente en " + archivo);
+    }
+
+    //? Leer empleados
+    public static void leerEmpleados(String archivo, ArrayList<empleado> empleados, ArrayList<puesto> puestos) throws IOException
+    {
+        File file = new File(archivo);  //? Crear archivo
+        if (!file.exists()) return; //? Si no existe el archivo, salir
+
+        BufferedReader reader = new BufferedReader(new FileReader(archivo));    //? Leer archivo
+        String line;
+
+        while ((line = reader.readLine()) != null)  //? Leer lineas mientras sea diferente de null
+        {
+            String[] data = line.split(",");    //? Separar datos
+            int id = Integer.parseInt(data[0]); //? Convertir datos en enteros
+            String nombre = data[1];    //? Convertir datos en string
+            float estatura = Float.parseFloat(data[2]);   //? Convertir datos en flotantes
+            double tiempo = Double.parseDouble(data[3]);    //? Convertir datos en dobles
+            char turno = data[4].charAt(0); //? Convertir datos en caracteres
+            int puestoNum = Integer.parseInt(data[5]);  //? Convertir datos en enteros
+            puesto actividad = puestos.stream().filter(p -> p.getNum() == puestoNum).findFirst().orElse(null);  //? Buscar puesto
+
+            empleado emp = new empleado();  //? Crear empleado
+            emp.setId(id);  //? Asigna id a empleado
+            emp.setNombre(nombre);      //? Asigna nombre a empleado
+            emp.setEstatura(estatura);  //? Asigna estatura a empleado
+            emp.setTiempo(tiempo);    //? Asigna tiempo a empleado
+            emp.setTurno(turno);    //? Asigna turno a empleado
+            emp.setActividad(actividad);    //? Asigna actividad a empleado
+            empleados.add(emp); //? Agregar empleado a la lista
+        }
+        reader.close(); //? Cerrar archivo
+        System.out.println("Empleados cargados exitosamente desde " + archivo);
     }
 }

@@ -60,26 +60,63 @@ public class Main
         do
         {
             menu(); //? Muetsra el menu
-            switch (opc) 
-            {
+            switch (opc) {
+                case 1 -> productos.add(VentasTelefono.altaProducto());    //? Dar de alta producto
 
-                case 1 -> AltaProductos();    //? Dar de alta producto
+                case 2 -> VentasTelefono.bajaProducto(productos);          //? Dar de baja producto
 
-                case 2 -> BajaProductos();     //? Dar de baja producto
+                case 3 -> VentasTelefono.consultarProducto(productos);     //? Consultar producto
 
-                case 3 -> ConsultarProductos();    //? Consultar producto
+                case 4 -> VentasTelefono.mostrarProductos(productos);      //? Mostrar productos disponibles
 
-                case 4 -> mostrarProductos();    //? Mostrar productos disponibles
+                case 5 -> 
+                {
+                    System.out.println("Ingrese el nombre del producto a pedir:"); 
+                    String nombreProducto = scanner.nextLine();
 
-                case 5 -> HacerPedido();     //? hacer pedido
+                    for (VentasTelefono producto : productos)   //? Recorrer los productos
+                    {
+                        if (producto.getProducto().equalsIgnoreCase(nombreProducto)) //? Si el producto es igual al ingresado
+                        {
+                            producto.hacerPedido(); //? hacer pedido  
+                            break;
+                        }
+                    }
+                }
 
-                case 6 ->  {}   //? Hacer apartado
+                case 6 -> 
+                {
+                    System.out.println("Ingrese el nombre del producto a apartar:");
+                    String nombreProducto = scanner.nextLine();
 
-                case 7 ->  {}   //? Pagar apartado
+                    for (VentasTelefono producto : productos)   //? Recorrer los productos
+                    {
+                        if (producto.getProducto().equalsIgnoreCase(nombreProducto))    //? Si el producto es igual al ingresado
+                        {
+                            producto.hacerApartado(); //? Hacer apartado
+                            break;
+                        }
+                    }
+                }
 
+                case 7 -> 
+                {
+                    System.out.println("Ingrese el nombre del producto a pagar:");  //? Pregu tar el nombre del producto
+                    String nombreProducto = scanner.nextLine();
+                    System.out.println("Ingrese el nombre del cliente que realizó el apartado:");   //? Preguntar el nombre del cliente
+                    String nombreCliente = scanner.nextLine();
+                    
+                    for (VentasTelefono producto : productos)   
+                    {
+                        if (producto.getProducto().equalsIgnoreCase(nombreProducto))    //? Si el producto es igual al ingresado
+                        {
+                            producto.pagarApartado(nombreCliente); //? Pagar apartado y borralo de archivo
+                            break;
+                        }
+                    }
+                }
                 case 9 -> System.out.println("\nSaliendo...\n");    //? Salir
-            
-                default -> System.out.println("Opcion invalida");   //? Opcion invalida
+                default -> System.out.println("Opcion invalida");
             }
 
         }while(opc!=9); //? Mientras la opcion sea diferente de 9
@@ -135,109 +172,4 @@ public class Main
         Files.write(Paths.get(archivo), lineas);    //? Escribir las lineas en el archivo
         System.out.println("Productos guardados correctamente.\n");
     }
-
-    //? Metodo para dar de alta un producto
-    public static void AltaProductos()
-    {
-        System.out.println("Ingrese el nombre del producto:");  //? Solicitar nombre del producto
-        String nombre = scanner.nextLine();
-        System.out.println("Ingrese el precio del producto:");  //? Solicitar precio del producto
-        int precio = Integer.parseInt(scanner.nextLine());
-        System.out.println("Ingrese la cantidad del producto:");    //? Solicitar cantidad del producto
-        int cantidad = Integer.parseInt(scanner.nextLine());
-
-        productos.add(new VentasTelefono(nombre, precio, cantidad));    //? Agregar el producto a la lista
-        System.out.println("Producto agregado exitosamente.");
-    }
-
-    //? Metodo para dar de baja un producto
-    public static void BajaProductos()
-    {
-        System.out.println("Ingrese el nombre del producto a dar de baja:");    //? Solicitar nombre del producto a dar de baja
-        String nombre = scanner.nextLine();
-        boolean encontrado = false;
-
-        for (VentasTelefono producto : productos)   //? Recorrer los productos
-        {
-            if (producto.getProducto().equalsIgnoreCase(nombre))  //? Si el producto es igual al nombre ingresado
-            {
-                productos.remove(producto); //? Eliminar el producto
-                System.out.println("Producto eliminado exitosamente.");
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (!encontrado)   //? Si no se encontro el producto
-            System.out.println("Producto no encontrado.");
-    }
-
-    //? Metodo para consultar un producto
-    public static void ConsultarProductos()
-    {
-        System.out.println("Ingrese el nombre del producto a consultar:");  //? Solicitar nombre del producto a consultar
-        String nombre = scanner.nextLine();
-        boolean encontrado = false;
-
-        for (VentasTelefono producto : productos)   //? Recorrer los productos
-        {
-            if (producto.getProducto().equalsIgnoreCase(nombre))    //? Si el producto es igual al nombre ingresado
-            {
-                System.out.println(producto);   //? Mostrar el producto
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (!encontrado)    //? Si no se encontro el producto
-            System.out.println("Producto no encontrado.");
-    }
-
-    //? Metodo para mostrar todos los productos
-    public static void mostrarProductos()
-    {
-        System.out.println("Productos disponibles:");
-        for (VentasTelefono producto : productos)
-        {
-            System.out.println(producto);
-        }
-    }
-
-    //? Metodo para hacer un pedido y reducir la cantidad de stock
-    public static void HacerPedido()
-    {
-        System.out.println("Ingrese el nombre del producto a pedir:");  //? Solicitar nombre del producto a pedir
-        String nombre = scanner.nextLine();
-        System.out.println("Ingrese la cantidad que desea pedir:");   //? Solicitar cantidad del producto a pedir
-        int cantidadPedido = Integer.parseInt(scanner.nextLine());  
-        boolean encontrado = false;
-
-        for (VentasTelefono producto : productos)   //? Recorrer los productos
-        {
-            if (producto.getProducto().equalsIgnoreCase(nombre))    //? Si el producto es igual al nombre ingresado
-            {
-                if (producto.getCantidad() >= cantidadPedido)   //? Si la cantidad en stock es mayor o igual a la cantidad del pedido
-                {
-                    producto.setCantidad(producto.getCantidad() - cantidadPedido);  //? Restar la cantidad del pedido a la cantidad en stock
-                    System.out.println("Pedido realizado exitosamente.");
-                } 
-                else   //? Si la cantidad en stock es menor a la cantidad del pedido
-                    System.out.println("Cantidad insuficiente en stock.");
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (!encontrado)  //? Si no se encontro el producto
-            System.out.println("Producto no encontrado.");
-    }
-
-    /*
-    ! FAlTANTE
-    ? Crear metodo de persona para poder registrar los apartados
-    ? crear txt donde se guarden los apartados
-    ? Pedir datos de la persona y direccion a donde se enviara el producto (opc 5)
-    ? Hacer apartados
-    ? Pagar apartados
-     */
 }

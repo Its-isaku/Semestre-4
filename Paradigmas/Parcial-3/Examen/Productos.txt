@@ -1,20 +1,20 @@
-IPhone 14,18,998
-Laptop Dell Inspiron 14",14,499
-Audífonos Bose con cancelación de ruido,5,299
-Cámara Canon EOS Rebel,9,999
-Consola Nintendo Switch,7,499
-IPad Air 10.9",15,299
-Televisor OLED 55" LG,23,499
-Bocina inteligente Amazon Echo,1,999
-Proyector Epson,6,799
-Barra de sonido Sony,3,499
-Router Mesh TP-Link Deco,2,999
-Disco duro externo 1TB WD,1,299
-Mouse ergonómico Logitech MX,999,2
-Teclado gaming Razer,1,899
-Cámara de acción GoPro Hero,6,499
-Smartwatch Garmin,4,999
-Monitor curvo Samsung 27",4,299
-Estación de carga inalámbrica,799,9
-Impresora láser Brother,2,899
-Dron DJI Mini,11,499
+IPhone 14,18998,2
+Laptop Dell Inspiron 14",14499,2
+Audífonos Bose con cancelación de ruido,5299,4
+Cámara Canon EOS Rebel,9999,2
+Consola Nintendo Switch,7499,5
+IPad Air 109",15299,1
+Televisor OLED 55" LG,23499,1
+Bocina inteligente Amazon Echo,1999,4
+Proyector Epson,6799,3
+Barra de sonido Sony,3499,4
+Router Mesh TP-Link Deco,2999,5
+Disco duro externo 1TB WD,1299,8
+Mouse ergonómico Logitech,9992,2
+Teclado gaming Razer,1899,2
+Cámara de acción GoPro Hero,6499,1
+Smartwatch Garmin,4999,7
+Monitor curvo Samsung 27",4299,2
+Estación de carga inalámbrica799,9,15
+Impresora láser Brother2,899,3
+Dron DJI Mini,11499,1

@@ -1,4 +1,3 @@
-IPhone 14,18998,2
 Laptop Dell Inspiron 14",14499,2
 Audífonos Bose con cancelación de ruido,5299,4
 Cámara Canon EOS Rebel,9999,2
@@ -9,7 +8,7 @@ Bocina inteligente Amazon Echo,1999,4
 Proyector Epson,6799,3
 Barra de sonido Sony,3499,4
 Router Mesh TP-Link Deco,2999,5
-Disco duro externo 1TB WD,1299,8
+Disco duro externo 1TB WD,1299,5
 Mouse ergonómico Logitech,9992,2
 Teclado gaming Razer,1899,2
 Cámara de acción GoPro Hero,6499,1
@@ -18,3 +17,4 @@ Monitor curvo Samsung 27",4299,2
 Estación de carga inalámbrica799,9,15
 Impresora láser Brother2,899,3
 Dron DJI Mini,11499,1
+PlayStation 5,15999,5

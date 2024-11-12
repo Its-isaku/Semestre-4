@@ -1,6 +1,7 @@
-1,secretaria,2000
-2,conductor,3000
-3,ayudante,2300
-4,guardia,3500
-5,administrativo,2800
-6,taquero,5000
+1, secretaria, 2000
+2, conductor, 3000
+3, ayudante, 2300
+4, guardia, 3500
+5, administrativo, 2800
+6, taquero, 5000
+7, trailero, 20000

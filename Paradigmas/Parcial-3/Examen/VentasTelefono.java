@@ -40,11 +40,6 @@ public class VentasTelefono
         return "Producto: " + Producto + ", Precio: $" + Precio + ", Cantidad: " + Cantidad;
     }
 
-
-
-
-
-
     //? Metodo para alta de productos
     public static VentasTelefono altaProducto() 
     {
@@ -59,11 +54,7 @@ public class VentasTelefono
 
         return new VentasTelefono(nombre, precio, cantidad);    //? Retorna un nuevo producto 
     }
-
-
-
-
-
+    
     //? Metodo para dar de baja un producto
     public static void bajaProducto(List<VentasTelefono> productos) 
     {

@@ -14,7 +14,7 @@ public class Principal
         Arbol nums = new Arbol();
         int opc = 0;
         int num = 0;
-        int[] arreglo = {3, 8, 10, 2, 1, 4, 7, 12, 20, 6};
+        int[] arreglo = {15, 10, 20, 18, 30};
 
         //? Ciclo para el menu 
         do
@@ -115,7 +115,7 @@ public class Principal
                         System.out.println("Numero no Encontrado");
                     else // si lo encuentra
                     {
-                        nums.Eliminar(nums.getRaiz(), num, null);
+                        nums.setRaiz(nums.deleteNode(nums.getRaiz(), num));
                         System.out.println("Numero eliminado");
                     }
                 }

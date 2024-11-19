@@ -22,45 +22,50 @@ public class HashArray
 
     public void Buscar(String dato)
     {
-        int pos = 0, SumaAscii = 0;
-
-        for (int i = 0; i < dato.length(); i++)    //? recorre la cadena
-            SumaAscii += dato.codePointAt(i);    //? suma los valores ascii de cada caracter
-        pos = SumaAscii % Size;    //? calcula la posicion
-
-        if(Arreglo[pos].equals(dato))
-            System.out.println(dato + " se encuentra en la posicion: " + pos);
-        else
-            System.out.println("Fue colision buscando la posicion....");
+        int pos = calcularHash(dato);
+    
+        // Resolución de colisión por sondeo lineal
+        while (!Arreglo[pos].equals("Vacio"))
+        {
+            if (Arreglo[pos].equals(dato))
+            {
+                System.out.println(dato + " se encuentra en la posición: " + pos);
+                return;
+            }
+            pos = (pos + 1) % Size; // Avanzar al siguiente índice
+        }
+        System.out.println("El dato no se encuentra en el arreglo.");
     }
-
+    
+    private int calcularHash(String dato)
+    {
+        int hashValue = 0;
+        int base = 31;
+        for (int i = 0; i < dato.length(); i++)
+        {
+            hashValue = (hashValue * base + dato.codePointAt(i)) % Size;
+        }
+        return hashValue;
+    }
+    
     public void AsignaHash(String dato)
     {
-        int pos = 0, SumaAscii = 0;
-
-        for (int i = 0; i < dato.length(); i++)    //? recorre la cadena
-            SumaAscii += dato.codePointAt(i);    //? suma los valores ascii de cada caracter
-
-        //SumaAscii += Math.pow(dato.codePointAt(i), i+1);    //? suma los valores ascii de cada caracter    
-
-
-        pos = SumaAscii % Size;    //? calcula la posicion
-        System.out.println(dato + " va en posicion: " + pos);
-
-        if(Arreglo[pos].equals("Vacio"))
+        int pos = calcularHash(dato);
+    
+        if (Arreglo[pos].equals("Vacio"))
+        {
             Arreglo[pos] = dato;
+        }
         else
         {
-            System.out.println("\nPosicion ocupada....\nBuscando Otra posicion!\n");
-
-            while(!Arreglo[pos].equals("Vacio"))
-            { 
-                pos++;  //? se incrementa la posicion
-                if(pos == Size) //? si llega al final del arreglo se devuelve al inicio
-                    pos = 0;
+            System.out.println("\nPosición ocupada....\nBuscando otra posición!\n");
+        
+            while (!Arreglo[pos].equals("Vacio"))
+            {
+                pos = (pos + 1) % Size; // Sondeo lineal
             }
-            System.out.println("Se asigno en la posicion: " + pos);
             Arreglo[pos] = dato;
+            System.out.println("Se asignó en la posición: " + pos);
         }
     }
 }

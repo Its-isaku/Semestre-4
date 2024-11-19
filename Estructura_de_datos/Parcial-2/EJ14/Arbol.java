@@ -119,39 +119,100 @@ public class Arbol
         return encontrado;
     }
 
-    //? Metodo para eliminar
-    public void Eliminar(NodoArbol_2 i,int num, NodoArbol_2 ant ) //* la primera vez recbe la raiz como i, null como ant
+    public NodoArbol_2 getMinimumKey(NodoArbol_2 curr)
     {
-        boolean encontrado = false;
+        while (curr.getIzq() != null) 
+            curr = curr.getIzq();
+        return curr;
+    }
 
-        if(i.getElem() == num) //* caso 1: cuando i no tiene hijos/ e un elemento
+    //? Metodo para eliminar
+    public NodoArbol_2 deleteNode(NodoArbol_2 root, int key){
+        // puntero para almacenar el padre del nodo actual
+        NodoArbol_2 parent = null;
+        NodoArbol_2 curr=root;
+        //seccion donde busca si la clave esta en el arbol
+        // busca la clave en el BST y establece su puntero principal
+        while (curr != null && curr.getElem() != key)
         {
-            if(this.getRaiz().getIzq() == null && this.getRaiz().getDer() == null) //* La raiz es el unico Nodo 
-                Raiz = null;
-            else //* Caso 2: Cuando Nodo no tiene hijos
-            {
-                if(i.getIzq() == null && i.getDer() == null)
-                {
-                    if(ant.getIzq() == i) //* si el nodo a eliminar es el izquierdo
-                        ant.setIzq(null); 
-                    else //* si el nodo a eliminar es el derecho
-                        ant.setDer(null);
-                }
-                else //* */ caso 3: cuando si tiene hijos
-                {
-                    System.out.println("Probando caso 3");
-                }
+            // actualiza el padre al nodo actual
+            parent = curr;
+
+            // si la clave dada es menor que el nodo actual, vaya al subárbol izquierdo;
+            // de lo contrario, vaya al subárbol derecho
+            if (key < curr.getElem()) {
+                curr = curr.getIzq();
+            }
+            else {
+                curr = curr.getDer();
             }
         }
-        else // anvanzar la i
-        {
-            if(num < i.getElem()) //* avanzar a la izquierda
-                Eliminar(i.getIzq(), num, i); //* i es el nodo actual, num es el numero a eliminar, ant es el nodo anterior
-            else //* avanzar a la derecha
-                Eliminar(i.getDer(), num, i); //* i es el nodo actual, num es el numero a eliminar, ant es el nodo anterior
+
+        // regresa si la clave no se encuentra en el árbol
+        if (curr == null) {
+            return root;
         }
+        //fin busqueda
 
+        // Caso 1: el nodo a eliminar no tiene hijos, es decir, es un nodo hoja
+        if (curr.getIzq() == null && curr.getDer() == null){
+            // si el nodo a eliminar no es un nodo raíz, establezca su
+            // padre izquierdo/derecho hijo a nulo
+            if (curr != root)
+            {
+                if (parent.getIzq() == curr) {
+                    parent.setIzq(null);
+                }
+                else {
+                    parent.setDer(null);
+                }
+            }
+            // si el árbol solo tiene un nodo raíz, configúrelo como nulo
+            else {
+                root = null;
+            }
+        } //fin caso 1
 
+        //caso 2: nodo a eliminar tiene 2 hijos
+        else if (curr.getIzq() != null && curr.getDer() != null){
+            // encuentra su nodo sucesor en orden
+            NodoArbol_2 successor = getMinimumKey(curr.getDer());
+
+            // almacenar el valor del sucesor
+            int val = successor.getElem();
+
+            // borra recursivamentemente el sucesor. Nótese que el sucesor
+            // tendrá como máximo un hijo (hijo derecho)
+            deleteNode(root, successor.getElem());
+
+            // copia el valor del sucesor al nodo actual
+            curr.setElem(val);
+        } //fin caso 2
+
+        // Caso 3: el nodo a eliminar solo tiene un hijo
+        else {
+            // elige un nodo hijo
+            NodoArbol_2 child = (curr.getIzq() != null)? curr.getIzq(): curr.getDer();
+
+            // si el nodo a eliminar no es un nodo raíz, establezca su padre
+            // a su hijo
+            if (curr != root)
+            {
+                if (curr == parent.getIzq()) {
+                    parent.setIzq(child);
+                }
+                else {
+                    parent.setDer(child);
+                }
+            }
+
+            // si el nodo que se va a eliminar es un nodo raíz, establezca la raíz en el hijo
+            else {
+                root = child;
+            }
+        } //fin caso 3
+
+        return root;
     }
 
 

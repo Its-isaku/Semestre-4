@@ -9,7 +9,7 @@ public class Principal
 
         //? Variables
         Scanner scanner = new  Scanner(System.in);
-        HashArray alumnos = new HashArray(7);
+        HashArray alumnos = new HashArray(10);
         String dato = " ";
         int opc = 0;
 

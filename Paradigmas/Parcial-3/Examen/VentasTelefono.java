@@ -19,7 +19,7 @@ public class VentasTelefono
     {
         this.Producto = producto;
         this.Precio = precio;
-        this.Cantidad = cantidad;
+        this.Cantidad = cantidad; 
     }
 
     //? Getters y Setters
@@ -41,7 +41,7 @@ public class VentasTelefono
     }
 
     //? Metodo para alta de productos
-    public static VentasTelefono altaProducto() 
+    public static VentasTelefono altaProducto() //? se usa la misma clase como tipo de retorno
     {
         System.out.println("Ingrese el nombre del producto:");
         String nombre = scanner.nextLine();
@@ -156,7 +156,7 @@ public class VentasTelefono
         {
             for (String apartado : apartados)   //? Recorrer los apartados
             {
-                if (!apartado.contains("Nombre: " + clienteNombre) || !apartado.contains("Producto: " + Producto))  //? Si el apartado no contiene el nombre del cliente o el producto
+                if (!apartado.contains("Nombre: " + clienteNombre) && !apartado.contains("Producto: " + Producto))  //? Si el apartado no contiene el nombre del cliente o el producto
                 {
                     writer.write(apartado + "\n");  //? Escribir el apartado
                 }

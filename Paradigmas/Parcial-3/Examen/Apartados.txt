@@ -1,0 +1,1 @@
+Nombre: isai, Direccion: uabc, Telefono: 6651272501, Producto: PlayStation 5, Monto inicial: 5000, Faltante: 10999

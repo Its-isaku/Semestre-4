@@ -8,7 +8,7 @@ public class Cliente
     //? constructor
     public Cliente(String nombre, String direccion, String telefono) 
     {
-        this.Nombre = nombre;
+        this.Nombre = nombre; 
         this.Direccion = direccion;
         this.Telefono = telefono;
     }

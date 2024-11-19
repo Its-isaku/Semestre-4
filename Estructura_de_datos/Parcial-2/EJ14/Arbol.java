@@ -124,18 +124,22 @@ public class Arbol
     {
         boolean encontrado = false;
 
-        if(i.getElem() == num) //* caso 1: cuando i no tiene hijos
+        if(i.getElem() == num) //* caso 1: cuando i no tiene hijos/ e un elemento
         {
             if(this.getRaiz().getIzq() == null && this.getRaiz().getDer() == null) //* La raiz es el unico Nodo 
                 Raiz = null;
-            else //* Cuando Nodo no tiene hijos
+            else //* Caso 2: Cuando Nodo no tiene hijos
             {
                 if(i.getIzq() == null && i.getDer() == null)
                 {
                     if(ant.getIzq() == i) //* si el nodo a eliminar es el izquierdo
-                        ant.setIzq(null);
+                        ant.setIzq(null); 
                     else //* si el nodo a eliminar es el derecho
                         ant.setDer(null);
+                }
+                else //* */ caso 3: cuando si tiene hijos
+                {
+                    System.out.println("Probando caso 3");
                 }
             }
         }
@@ -146,7 +150,9 @@ public class Arbol
             else //* avanzar a la derecha
                 Eliminar(i.getDer(), num, i); //* i es el nodo actual, num es el numero a eliminar, ant es el nodo anterior
         }
-    }
-}
 
-//! FALTA CASO 2 Y 3
+
+    }
+
+
+}

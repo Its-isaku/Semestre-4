@@ -29,7 +29,7 @@
 * 7. Clientes y Menu de todo. Rubio
 
 * Si usted necesita clases de otro compañero, usted haga su propia clase con datos básicos.
- */
+*/
 
 //? Liberias
 import java.io.IOException;
@@ -79,6 +79,7 @@ public class Main
                         if (producto.getProducto().equalsIgnoreCase(nombreProducto)) //? Si el producto es igual al ingresado
                         {
                             producto.hacerPedido(); //? hacer pedido  
+                            guardarArchivo(archivo);    //? Guardar productos al archivo
                             break;
                         }
                     }
@@ -108,7 +109,7 @@ public class Main
                     
                     for (VentasTelefono producto : productos)   
                     {
-                        if (producto.getProducto().equalsIgnoreCase(nombreProducto))    //? Si el producto es igual al ingresado
+                        if (producto.getProducto().equalsIgnoreCase(nombreProducto))    //? Si el pr4oducto es igual al ingresado
                         {
                             producto.pagarApartado(nombreCliente); //? Pagar apartado y borralo de archivo
                             break;
@@ -157,8 +158,7 @@ public class Main
             int precio = Integer.parseInt(datos[1]);    //? Precio del producto
             int cantidad = Integer.parseInt(datos[2]);  //? Cantidad del producto
             productos.add(new VentasTelefono(nombre, precio, cantidad));    //? Agrega el producto a la lista
-        }
-        System.out.println("Productos cargados correctamente.\n");    
+        }    
     }
 
      //? Metodo para guardar productos en el archivo
@@ -170,6 +170,5 @@ public class Main
             lineas.add(producto.getProducto() + "," + producto.getPrecio() + "," + producto.getCantidad());     //? Agregar los productos a la lista con el mismo formato
         }
         Files.write(Paths.get(archivo), lineas);    //? Escribir las lineas en el archivo
-        System.out.println("Productos guardados correctamente.\n");
     }
 }

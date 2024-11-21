@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -72,6 +73,30 @@ public class EJ27
         .sorted(Comparator.comparing(String::length))   //? Ordena los nombres por longitud
         .forEach(System.out::println);
         System.out.println();
+
+
+        System.out.println("Usando Map:");
+        List<Persona> people = new ArrayList<>(Arrays.asList(
+            new Persona(1, "Isai", "Almeraz", "isaialmeraz.com", "hombre", 21),
+            new Persona(2, "Gareth", "Castro", "garethcastro.com", "hombre", 20)
+        ));
+
+        List<Persona> personas =
+        people.stream().map(person -> 
+                {    
+                    Persona persona = new Persona(2, "Gareth", "Castro", "garethcastro.com", "hombre", 20);
+                    persona.setId(person.getId());
+                    persona.setNombre(person.getNombre());
+                    persona.setApellido(person.getApellido());
+                    persona.setCorreo(person.getCorreo());
+                    persona.setGenero(person.getGenero());
+                    persona.setEdad(person.getEdad());
+                    return persona;
+                }).collect(Collectors.toList());
+
+                // Mostrar la lista transformada
+                personas.forEach(persona -> {System.out.println(persona.toString());});
+
 
         System.out.println("\n||--------------------------------------------------||\n");
     }
